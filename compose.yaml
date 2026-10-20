@@ -1,0 +1,23 @@
+services:
+  plex-discord-stats:
+    image: ghcr.io/YOUR_GITHUB_USERNAME/plex-discord-stats:latest
+    container_name: plex-discord-stats
+    restart: unless-stopped
+    environment:
+      TAUTULLI_URL: "http://192.168.1.30:8181"
+      TAUTULLI_API_KEY: "YOUR_TAUTULLI_API_KEY"
+      DISCORD_BOT_TOKEN: "YOUR_DISCORD_BOT_TOKEN"
+      DISCORD_GUILD_ID: "YOUR_DISCORD_SERVER_ID"
+      DISCORD_CATEGORY_ID: "YOUR_DISCORD_CATEGORY_ID"
+      DISCORD_MOVIES_CHANNEL_ID: "YOUR_MOVIES_VOICE_CHANNEL_ID"
+      DISCORD_SHOWS_CHANNEL_ID: "YOUR_TV_SHOWS_VOICE_CHANNEL_ID"
+      DISCORD_EPISODES_CHANNEL_ID: "YOUR_EPISODES_VOICE_CHANNEL_ID"
+      UPDATE_INTERVAL_SECONDS: "3600"
+      LOG_LEVEL: "INFO"
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 64m
+    pids_limit: 32
